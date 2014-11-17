@@ -1,7 +1,9 @@
 # Face Recognition
 
-Exercise for module MECO @ FHNW.
+**Exercise for module MECO @ FHNW.** 
+
 Professor `Fredrik Gundelsweiler`
+ 
 Students `Caroline Badoud, Patricia Roth, Celine Solenthaler, Beat Temperli`
 
 ## Installation
