@@ -2,6 +2,9 @@
 
 var $ = jQuery;
 
-$(function () {
+$(document).ready(function(){
     console.log('facedetection start');
+
+    // start facetracker.
+    initFaceTracker();
 });
