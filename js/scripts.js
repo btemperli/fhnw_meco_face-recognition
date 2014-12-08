@@ -2,8 +2,15 @@
 
 var $ = jQuery;
 
+var $startButton;
+
+var initStartButton,
+    showStartButton;
+
 $(document).ready(function(){
-    console.log('facedetection start');
+
+    //$startButton.hide();
+    initStartButton();
 
     // read database
     var dir = "/database";
@@ -17,9 +24,24 @@ $(document).ready(function(){
                 var filename = this.href.replace(window.location.host, "").replace("http:///", "");
                 $("#database").append($("<div class='database-person' style=background-image:url(" + dir + '/' + filename + ")></div>"));
             });
+
+            showStartButton();
         }
     });
-
-    // start facetracker.
-    initFaceTracker();
 });
+
+showStartButton = function () {
+    console.log('show the start button');
+    $startButton.show();
+};
+
+initStartButton = function () {
+
+    $startButton = $('#startButton');
+    $startButton.click(function () {
+
+        console.log('clicked on start button.');
+        initFaceTracker();
+    });
+};
+

@@ -3,7 +3,7 @@
    ========================================================================= */
 
 .content {
-    min-height: 500px;
+    min-height: 532px;
 }
 
 .database {
@@ -15,6 +15,11 @@
         margin: $size-base/2;
         float: left;
     }
+}
+
+#startButton {
+    display: none;
+    margin-bottom: $size-base;
 }
 
 .brf-logo {

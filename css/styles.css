@@ -4630,13 +4630,14 @@ header {
   position: fixed;
   top: 0px;
   width: 100%;
+  z-index: 1000;
 }
-/* line 13, ../sass/src/_header.scss */
+/* line 14, ../sass/src/_header.scss */
 header h1 {
   margin-top: 10px;
 }
 
-/* line 18, ../sass/src/_header.scss */
+/* line 19, ../sass/src/_header.scss */
 body {
   margin-top: 120px;
 }
@@ -4646,7 +4647,7 @@ body {
    ========================================================================= */
 /* line 5, ../sass/src/_face.scss */
 .content {
-  min-height: 500px;
+  min-height: 532px;
 }
 
 /* line 10, ../sass/src/_face.scss */
@@ -4660,6 +4661,12 @@ body {
 }
 
 /* line 20, ../sass/src/_face.scss */
+#startButton {
+  display: none;
+  margin-bottom: 12px;
+}
+
+/* line 25, ../sass/src/_face.scss */
 .brf-logo {
   height: 50px;
   width: auto;
