@@ -4648,3 +4648,19 @@ body {
 .content {
   min-height: 500px;
 }
+
+/* line 10, ../sass/src/_face.scss */
+.database .database-person {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 6px;
+  float: left;
+}
+
+/* line 20, ../sass/src/_face.scss */
+.brf-logo {
+  height: 50px;
+  width: auto;
+}

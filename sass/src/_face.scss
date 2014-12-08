@@ -5,3 +5,19 @@
 .content {
     min-height: 500px;
 }
+
+.database {
+    .database-person {
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        margin: $size-base/2;
+        float: left;
+    }
+}
+
+.brf-logo {
+    height: 50px;
+    width: auto;
+}
