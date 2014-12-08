@@ -4642,6 +4642,11 @@ body {
   margin-top: 120px;
 }
 
+/* line 24, ../sass/src/_header.scss */
+footer {
+  margin-top: 60px;
+}
+
 /* =========================================================================
    Styles for the face-recognition
    ========================================================================= */
@@ -4659,15 +4664,25 @@ body {
   margin: 6px;
   float: left;
   background-position: 50% 50%;
+  padding: 50px 0 0 10px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 1px 1px #000000;
 }
 
-/* line 21, ../sass/src/_face.scss */
+/* line 25, ../sass/src/_face.scss */
 #startButton {
   display: none;
   margin-bottom: 12px;
 }
 
-/* line 26, ../sass/src/_face.scss */
+/* line 30, ../sass/src/_face.scss */
+#stopButton {
+  display: none;
+  margin-bottom: 12px;
+}
+
+/* line 35, ../sass/src/_face.scss */
 .brf-logo {
   height: 50px;
   width: auto;

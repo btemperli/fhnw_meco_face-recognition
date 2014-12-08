@@ -15,10 +15,19 @@
         margin: $size-base/2;
         float: left;
         background-position: 50% 50%;
+        padding: 50px 0 0 10px;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 1px 1px #000000;
     }
 }
 
 #startButton {
+    display: none;
+    margin-bottom: $size-base;
+}
+
+#stopButton {
     display: none;
     margin-bottom: $size-base;
 }

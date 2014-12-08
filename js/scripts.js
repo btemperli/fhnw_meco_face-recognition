@@ -20,9 +20,14 @@ $(document).ready(function(){
         url: dir,
         success: function (data) {
             //Listt all jpg file names in the page
-            $(data).find("a:contains(" + fileextension + ")").each(function () {
+            $(data).find("a[href$='" + fileextension + "']").each(function () {
                 var filename = this.href.replace(window.location.host, "").replace("http:///", "");
-                $("#database").append($("<div class='database-person' style=background-image:url(" + dir + '/' + filename + ")></div>"));
+                var splitFilename = filename.split('.')[0].split('_');
+                $("#database").append(
+                    $("<div class='database-person' style=background-image:url(" + dir + '/' + filename + ")>"
+                        + capitaliseFirstLetter(splitFilename[1]) + "<br />" + capitaliseFirstLetter(splitFilename[2])
+                        + "</div>")
+                );
             });
 
             showStartButton();
@@ -45,3 +50,7 @@ initStartButton = function () {
     });
 };
 
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
