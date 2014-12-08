@@ -8,6 +8,9 @@ if(createjs == null) {
 	throw "ExampleFaceTracking.js uses CreateJS to display its content. Make sure to follow the implementation examples of the JS version of the SDK.";
 }
 
+var initialised = false;
+var stopped = false;
+
 /**
  * Called onload of body.
  */
@@ -83,32 +86,45 @@ function initFaceTracker() {
 
 		_this.updateGUI = function() {
 
-			_this._draw.clear();
+            if (!stopped) {
 
-			// Get the current BRFState and faceShape.
-			var state = _this._brfManager.state;
-			var faceShape = _this._brfManager.faceShape;
+                // Get the current BRFState and faceShape.
+                var state = _this._brfManager.state;
+                var faceShape = _this._brfManager.faceShape;
 
-			// Draw BRFs region of interest, that got analysed:
-			lib.DrawingUtils.drawRect(_this._draw, _this._brfRoi, false, 1.0, "#acfeff", 1.0);
+                if (initialised && faceShape.rotationX === 0 && faceShape.rotationZ === 0 && faceShape.rotationY === 0) {
 
-			if(state == lib.BRFState.FACE_DETECTION) {
-				// Last update was face detection only,
-				// draw the face detection roi and lastDetectedFace:
-				lib.DrawingUtils.drawRect(_this._draw, _this._faceDetectionRoi, false, 1.0, "#ffff00", 1.0);
+                    localStorage.setItem('result', JSON.stringify(faceShape));
+                    stopped = true;
+                    compareFaces();
+                    return null;
+                }
 
-				// And draw the one result, that got calculated from lastDetectedFaces.
-				var rect = _this._brfManager.lastDetectedFace;
-				if(rect != null && rect.width != 0) {
-					lib.DrawingUtils.drawRect(_this._draw, rect, false, 3.0, "#ff7900", 1.0);
-				}
-			} else if(state == lib.BRFState.FACE_TRACKING_START || state == lib.BRFState.FACE_TRACKING) {
-				// The found face rectangle got analysed in detail
-				// draw the faceShape and its bounds:
-				lib.DrawingUtils.drawTriangles(_this._draw, faceShape.faceShapeVertices, faceShape.faceShapeTriangles);
-				//lib.DrawingUtils.drawTrianglesAsPoints(_this._draw, faceShape.faceShapeVertices);
-				lib.DrawingUtils.drawRect(_this._draw, faceShape.bounds);
-			}
+                _this._draw.clear();
+
+                initialised = true;
+
+                // Draw BRFs region of interest, that got analysed:
+                lib.DrawingUtils.drawRect(_this._draw, _this._brfRoi, false, 1.0, "#acfeff", 1.0);
+
+                if (state == lib.BRFState.FACE_DETECTION) {
+                    // Last update was face detection only,
+                    // draw the face detection roi and lastDetectedFace:
+                    lib.DrawingUtils.drawRect(_this._draw, _this._faceDetectionRoi, false, 1.0, "#ffff00", 1.0);
+
+                    // And draw the one result, that got calculated from lastDetectedFaces.
+                    var rect = _this._brfManager.lastDetectedFace;
+                    if (rect != null && rect.width != 0) {
+                        lib.DrawingUtils.drawRect(_this._draw, rect, false, 3.0, "#ff7900", 1.0);
+                    }
+                } else if (state == lib.BRFState.FACE_TRACKING_START || state == lib.BRFState.FACE_TRACKING) {
+                    // The found face rectangle got analysed in detail
+                    // draw the faceShape and its bounds:
+                    lib.DrawingUtils.drawTriangles(_this._draw, faceShape.faceShapeVertices, faceShape.faceShapeTriangles);
+                    //lib.DrawingUtils.drawTrianglesAsPoints(_this._draw, faceShape.faceShapeVertices);
+                    lib.DrawingUtils.drawRect(_this._draw, faceShape.bounds);
+                }
+            }
 		};
 
 	}).inheritsFrom(lib.FaceTrackerBase);

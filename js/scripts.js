@@ -2,19 +2,24 @@
 
 var $ = jQuery;
 
-var $startButton;
+var $startButton,
+    databaseImages,
+    localstorageDatabase;
 
 var initStartButton,
-    showStartButton;
+    initDatabaseTracker,
+    showStartButton,
+    compareFaces;
 
 $(document).ready(function(){
 
-    //$startButton.hide();
     initStartButton();
+    databaseImages = {};
 
     // read database
     var dir = "/database";
     var fileextension = ".jpg";
+
     $.ajax({
         //This will retrieve the contents of the folder if the folder is configured as 'browsable'
         url: dir,
@@ -28,15 +33,17 @@ $(document).ready(function(){
                         + capitaliseFirstLetter(splitFilename[1]) + "<br />" + capitaliseFirstLetter(splitFilename[2])
                         + "</div>")
                 );
+
+                databaseImages[splitFilename[1] + '_' + splitFilename[2]] = dir + '/' + filename;
             });
 
-            showStartButton();
+            //showStartButton();
+            initDatabaseTracker();
         }
     });
 });
 
 showStartButton = function () {
-    console.log('show the start button');
     $startButton.show();
 };
 
@@ -44,11 +51,46 @@ initStartButton = function () {
 
     $startButton = $('#startButton');
     $startButton.click(function () {
-
-        console.log('clicked on start button.');
         initFaceTracker();
     });
 };
+
+initDatabaseTracker = function () {
+
+    var database = localStorage.getItem('database');
+
+    if (database == null) {
+        initFaceTrackerImage(databaseImages);
+    } else {
+        initImagesFinished();
+    }
+};
+
+compareFaces = function () {
+
+    console.log('compare image');
+    var jsonString = localStorage.getItem('result');
+    var resultFace = $.parseJSON(jsonString);
+
+    console.log(resultFace);
+    console.log(localstorageDatabase);
+
+};
+
+function initImagesFinished ()
+{
+    var jsonString = localStorage.getItem('database');
+    var databaseStrings = $.parseJSON(jsonString);
+
+    localstorageDatabase = {};
+
+    $.each(databaseStrings, function (index, item) {
+        jsonString = localStorage.getItem(item);
+        localstorageDatabase[item] = $.parseJSON(jsonString);
+    });
+
+    showStartButton();
+}
 
 function capitaliseFirstLetter(string)
 {

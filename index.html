@@ -35,6 +35,7 @@
 
 
     <script src="/js/FaceTracker/FaceTracker.js"></script>
+    <script src="/js/FaceTracker/FaceTrackerImage.js"></script>
     <script src="/js/scripts.js"></script>
 
 	<!-- 
@@ -87,7 +88,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <canvas id="_stage" width="1280" height="720" style="position:absolute;left:0px;top:0px;">Your browser does not seem to support canvas elements.</canvas>
+                <canvas id="_stage" width="1280" height="720" style="position:absolute;left:0;top:0;">Your browser does not seem to support canvas elements.</canvas>
             </div>
         </div>
     </section>
@@ -101,5 +102,8 @@
             Project is based on the third-party library from <a href="https://www.beyond-reality-face.com" target="_blank"><img class="brf-logo" src="img/assets/brf_nxt_logo_black.png" alt="beyond reality face logo"></a>
         </div>
     </footer>
+
+    <canvas id="imageTracker" width="800" height="450" style="position:relative;left:0px;top:0px;">Your browser does not seem to support canvas elements.</canvas>
+
 </body>
 </html>
