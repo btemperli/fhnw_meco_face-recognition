@@ -66,17 +66,6 @@ initDatabaseTracker = function () {
     }
 };
 
-compareFaces = function () {
-
-    console.log('compare image');
-    var jsonString = localStorage.getItem('result');
-    var resultFace = $.parseJSON(jsonString);
-
-    console.log(resultFace);
-    console.log(localstorageDatabase);
-
-};
-
 function initImagesFinished ()
 {
     var jsonString = localStorage.getItem('database');
@@ -95,4 +84,54 @@ function initImagesFinished ()
 function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+compareFaces = function () {
+
+    console.log('compare image');
+    var jsonString = localStorage.getItem('result');
+    var resultFace = $.parseJSON(jsonString);
+
+    console.log(resultFace);
+    console.log(localstorageDatabase);
+
+    getFaceProportions(resultFace);
+
+    $.each(localstorageDatabase, function (index, item) {
+
+    });
+};
+
+function getFaceProportions(face) {
+
+    // get different distances for a comparable face
+
+    // main distance persons left eye.
+    var main = getDistance(face['points'][27], face['points'][29]);
+
+    // right eye
+    var rightEye = getDistance(face['points'][34], face['points'][32]);
+    var noseLeftEye = getDistance(face['points'][67], face['points'][31]);
+    var noseRightEye = getDistance(face['points'][67], face['points'][33]);
+    var eyeEye = getDistance(face['points'][31], face['points'][33]);
+    var noseMouth = getDistance(face['points'][67], face['points'][64]);
+    var noseChin = getDistance(face['points'][67], face['points'][7]);
+    var noseLeft = getDistance(face['points'][67], face['points'][2]);
+    var noseRight = getDistance(face['points'][67], face['points'][12]);
+    var noseLeftTop = getDistance(face['points'][67], face['points'][0]);
+    var noseRightTop = getDistance(face['points'][67], face['points'][14]);
+    var noseRightBottom = getDistance(face['points'][67], face['points'][10]);
+    var noseLeftBottom = getDistance(face['points'][67], face['points'][4]);
+
+}
+
+function getDistance(a, b) {
+
+    var x = a.x - b.x;
+    var y = a.y - b.y;
+
+    if (x < 0) { x = x * -1; }
+    if (y < 0) { y = y * -1; }
+
+    return Math.sqrt((x*x) + (y*y));
 }
