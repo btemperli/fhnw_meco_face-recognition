@@ -6,9 +6,10 @@
 	<meta name="author" content="Marcel Klammer, Tastenkunst GmbH, 2014">
 	<meta name="description" content="Beyond Reality Face Nxt SDK - Javascript library for Face Tracking, Face Detection and Point Tracking">
 
-	<title>Beyond Reality Face Nxt. SDK - Javascript library for Face Tracking, Face Detection and Point Tracking</title>
+	<title>Face-Recognition</title>
 
 	<link rel="stylesheet" href="css/brf_examples.css">
+	<link rel="stylesheet" href="css/styles.css">
 
 	<!-- MrDoobs Stats: https://github.com/mrdoob/stats.js/ -->
 	<script src="js/lib/stats/stats.min.js"></script>
@@ -27,6 +28,9 @@
 	</script>
 	<script src="js/lib/brf/BRF_NXT_public_API.js"></script>
 	<script src="js/lib/brf/BRF_NXT_v3.0.10_trial.js"></script>
+
+    <script src="/lib/jquery/jquery-2.1.1.min.js"></script>
+    <script src="/js/scripts.js"></script>
 
 	<!-- 
 		BRF examples using CreateJS.
@@ -64,27 +68,24 @@
 <!-- See example file for the initExample function. -->
 <body onload="initExample();">
 
-	<!--
-		This is the canvas for createjs (the stage). You can change the size to any values.
-		You just need to set screenRect to place the video/results at a certain position on that stage.
-	-->
-	<canvas id="_stage" width="1280" height="720" style="position:absolute;left:0px;top:0px;">Your browser does not seem to support canvas elements.</canvas>
+    <header>
+        <div class="container">
+            <h1>Face-Recognition</h1>
+            <p>A Meco-Project by CBadoud, CSolenthaler, PRoth and BTemperli</p>
+        </div>
+    </header>
 
-	<!--
-		Chrome on Android v35+ supports getUserMedia! But the video needs to be started on user action.
-		This play button will be shown, if a user action is needed.
-	-->
-	<img src="media/assets/play.png" id="btPlay" style="display:none;position:absolute;top:165px;left:221px;"/>
+    <section class="content container">
+        <div class="col-xs-12">
+            <canvas id="_stage" width="1280" height="720" style="position:absolute;left:0px;top:0px;">Your browser does not seem to support canvas elements.</canvas>
+            <img src="media/assets/play.png" id="btPlay" style="display:none;position:absolute;top:165px;left:221px;"/>
+        </div>
+    </section>
 
-	<!--
-		The Beyond Reality Face Nxt logo.
-		Please be fair and don't hide the logo! Thanks.
-	-->
-	<div id="brfLogo">
-		<a href="https://www.beyond-reality-face.com" target="_blank">
-			<img src="media/assets/brf_nxt_logo_black.png" style="opacity:0.35;position:absolute;top:8px;left:9px;"/>
-			<img src="media/assets/brf_nxt_logo_white.png" style="opacity:0.75;position:absolute;top:7px;left:8px;"/>
-		</a>
-	</div>
+    <footer>
+        <div class="container">
+            Project is based on the third-party library <a href="https://www.beyond-reality-face.com" target="_blank">BEYOND REALITY FACE</a>
+        </div>
+    </footer>
 </body>
 </html>
