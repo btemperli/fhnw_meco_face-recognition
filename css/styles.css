@@ -4658,15 +4658,16 @@ body {
   height: 100px;
   margin: 6px;
   float: left;
+  background-position: 50% 50%;
 }
 
-/* line 20, ../sass/src/_face.scss */
+/* line 21, ../sass/src/_face.scss */
 #startButton {
   display: none;
   margin-bottom: 12px;
 }
 
-/* line 25, ../sass/src/_face.scss */
+/* line 26, ../sass/src/_face.scss */
 .brf-logo {
   height: 50px;
   width: auto;
