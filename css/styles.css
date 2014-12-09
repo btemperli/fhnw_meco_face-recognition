@@ -4659,8 +4659,8 @@ footer {
 .database .database-person {
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   margin: 6px;
   float: left;
   background-position: 50% 50%;
@@ -4668,21 +4668,98 @@ footer {
   color: #fff;
   font-weight: 700;
   text-shadow: 1px 1px #000000;
+  border: 2px solid #e5e5e5;
+}
+/* line 24, ../sass/src/_face.scss */
+.database .database-person.result-1 {
+  border-color: #0CE434;
+}
+/* line 25, ../sass/src/_face.scss */
+.database .database-person.result-2 {
+  border-color: #18E60B;
+}
+/* line 26, ../sass/src/_face.scss */
+.database .database-person.result-3 {
+  border-color: #4EE80B;
+}
+/* line 27, ../sass/src/_face.scss */
+.database .database-person.result-4 {
+  border-color: #85EB0B;
+}
+/* line 28, ../sass/src/_face.scss */
+.database .database-person.result-5 {
+  border-color: #BDED0B;
+}
+/* line 29, ../sass/src/_face.scss */
+.database .database-person.result-6 {
+  border-color: #F0E90A;
+}
+/* line 30, ../sass/src/_face.scss */
+.database .database-person.result-7 {
+  border-color: #F2B30A;
+}
+/* line 31, ../sass/src/_face.scss */
+.database .database-person.result-8 {
+  border-color: #F57C0A;
+}
+/* line 32, ../sass/src/_face.scss */
+.database .database-person.result-9 {
+  border-color: #F7430A;
+}
+/* line 33, ../sass/src/_face.scss */
+.database .database-person.result-10 {
+  border-color: #F90909;
+}
+/* line 34, ../sass/src/_face.scss */
+.database .database-person.result-11 {
+  border-color: #E40A22;
+}
+/* line 35, ../sass/src/_face.scss */
+.database .database-person.result-12 {
+  border-color: #CE0A3A;
+}
+/* line 36, ../sass/src/_face.scss */
+.database .database-person.result-13 {
+  border-color: #B80A52;
+}
+/* line 37, ../sass/src/_face.scss */
+.database .database-person.result-14 {
+  border-color: #A20A6A;
+}
+/* line 38, ../sass/src/_face.scss */
+.database .database-person.result-15 {
+  border-color: #8C0B83;
+}
+/* line 39, ../sass/src/_face.scss */
+.database .database-person.result-16 {
+  border-color: #760B9B;
+}
+/* line 40, ../sass/src/_face.scss */
+.database .database-person.result-17 {
+  border-color: #600BB3;
+}
+/* line 41, ../sass/src/_face.scss */
+.database .database-person.result-18 {
+  border-color: #4A0BCB;
+}
+/* line 42, ../sass/src/_face.scss */
+.database .database-person.result-19 {
+  border-color: #350CE4;
 }
 
-/* line 25, ../sass/src/_face.scss */
+/* line 48, ../sass/src/_face.scss */
 #startButton {
   display: none;
   margin-bottom: 12px;
 }
 
-/* line 30, ../sass/src/_face.scss */
+/* line 53, ../sass/src/_face.scss */
 #stopButton {
   display: none;
   margin-bottom: 12px;
 }
 
-/* line 35, ../sass/src/_face.scss */
+/* line 58, ../sass/src/_face.scss */
 .brf-logo {
   height: 50px;
   width: auto;

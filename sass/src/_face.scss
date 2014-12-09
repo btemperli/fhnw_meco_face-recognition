@@ -10,8 +10,8 @@
     .database-person {
         background-repeat: no-repeat;
         background-size: cover;
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
         margin: $size-base/2;
         float: left;
         background-position: 50% 50%;
@@ -19,7 +19,30 @@
         color: #fff;
         font-weight: 700;
         text-shadow: 1px 1px #000000;
+        border: 2px solid $color-background;
+
+        &.result-1 { border-color: #0CE434; }
+        &.result-2 { border-color: #18E60B; }
+        &.result-3 { border-color: #4EE80B; }
+        &.result-4 { border-color: #85EB0B; }
+        &.result-5 { border-color: #BDED0B; }
+        &.result-6 { border-color: #F0E90A; }
+        &.result-7 { border-color: #F2B30A; }
+        &.result-8 { border-color: #F57C0A; }
+        &.result-9 { border-color: #F7430A; }
+        &.result-10 { border-color: #F90909; }
+        &.result-11 { border-color: #E40A22; }
+        &.result-12 { border-color: #CE0A3A; }
+        &.result-13 { border-color: #B80A52; }
+        &.result-14 { border-color: #A20A6A; }
+        &.result-15 { border-color: #8C0B83; }
+        &.result-16 { border-color: #760B9B; }
+        &.result-17 { border-color: #600BB3; }
+        &.result-18 { border-color: #4A0BCB; }
+        &.result-19 { border-color: #350CE4; }
     }
+
+
 }
 
 #startButton {
