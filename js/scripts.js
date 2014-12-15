@@ -14,6 +14,9 @@ var initStartButton,
     showStartButton,
     compareFaces;
 
+/**
+ * start the whole thing when document is ready.
+ */
 $(document).ready(function(){
 
     initStartButton();
@@ -47,10 +50,16 @@ $(document).ready(function(){
 
 });
 
+/**
+ * show the start-button when system is ready.
+ */
 showStartButton = function () {
     $startButton.show();
 };
 
+/**
+ * initialize start-button when system is ready.
+ */
 initStartButton = function () {
 
     $startButton = $('#startButton');
@@ -59,6 +68,10 @@ initStartButton = function () {
     });
 };
 
+/**
+ * if no images are saved in the localStorage, start with reading the static images.
+ * else initialized live-image-tracker.
+ */
 initDatabaseTracker = function () {
 
     var database = localStorage.getItem('database');
@@ -70,6 +83,10 @@ initDatabaseTracker = function () {
     }
 };
 
+/**
+ * static images are loaded and face-tracked.
+ * add proportions to local database.
+ */
 function initImagesFinished ()
 {
     var jsonString = localStorage.getItem('database');
@@ -79,55 +96,55 @@ function initImagesFinished ()
 
     $.each(databaseStrings, function (index, item) {
         jsonString = localStorage.getItem(item);
-        localstorageDatabase[item] = $.parseJSON(jsonString);
+        var face = $.parseJSON(jsonString);
+        localstorageDatabase[item] = getFaceProportions(face);
     });
 
     showStartButton();
 }
 
+/**
+ * capitalize the first letter of an array
+ *
+ * @param string
+ * @returns {string}
+ */
 function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/**
+ * compare the faces of the database-result with the local proportions of the database-static-images.
+ */
 compareFaces = function () {
 
-    console.log('compare image');
     var jsonString = localStorage.getItem('result');
     var resultFace = $.parseJSON(jsonString);
     var resultFaceProportions = getFaceProportions(resultFace);
-    var proportions = {};
-    var faceComparePercents = {};
     var i = 0;
 
     $.each(localstorageDatabase, function (index, item) {
-        var faceProportions = getFaceProportions(item);
-        proportions[index] = faceProportions;
-        var comparePercents = compareProportions(resultFaceProportions, faceProportions);
-        faceComparePercents[index] = comparePercents;
-
+        var comparePercents = compareProportions(resultFaceProportions, item);
         $(faceResultImages[i]).removeClass().addClass('database-person').addClass('result-' + Math.round(comparePercents));
         i++;
     });
-
-    console.log("recognized face proportions:");
-    console.log(resultFaceProportions);
-
-    console.log("faceproportions of the database-faces:");
-    console.log(proportions);
-
-    console.log("compared percents: ");
-    console.log(faceComparePercents);
 
     window.startedAnalyse = false;
 
 };
 
+/**
+ * get face proportions of a face, recognized by FaceTracker.
+ *
+ * @param face
+ * @returns {Array}
+ */
 function getFaceProportions(face) {
 
     // get different distances for a comparable face
 
-    // main distance persons left eye.
+    // main distance persons eyes.
     var main = getDistance(face['points'][31], face['points'][33]);
 
     // right eye
@@ -170,6 +187,13 @@ function getFaceProportions(face) {
     return proportions;
 }
 
+/**
+ * get distance between two points
+ *
+ * @param a
+ * @param b
+ * @returns {number}
+ */
 function getDistance(a, b) {
 
     var x = getAmount(a.x - b.x);
@@ -178,6 +202,13 @@ function getDistance(a, b) {
     return Math.sqrt((x*x) + (y*y));
 }
 
+/**
+ * compare two arrays with proportions, return percentual difference of all the points.
+ *
+ * @param a
+ * @param b
+ * @returns {*}
+ */
 function compareProportions(a, b) {
 
     var comparePercent = [];
