@@ -127,6 +127,10 @@ compareFaces = function () {
     $.each(localstorageDatabase, function (index, item) {
         var comparePercents = compareProportions(resultFaceProportions, item);
         $(faceResultImages[i]).removeClass().addClass('database-person').addClass('result-' + Math.round(comparePercents));
+
+        if (comparePercents <= 3) {
+            $('#result').html('Erkannt: ' + capitaliseFirstLetter(index.split('_')[0]) + ' ' + capitaliseFirstLetter(index.split('_')[1]));
+        }
         i++;
     });
 
